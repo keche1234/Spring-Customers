@@ -36,18 +36,6 @@ public class WebController implements WebMvcConfigurer {
 		registry.addViewController("/error").setViewName("error");
 	}
 	
-//	@GetMapping("/")
-//	public String showForm(PersonForm personForm) {
-//		return "form";
-//	}
-	
-	//@PostMapping("/")
-//	public String checkPersonInfo(@Valid PersonForm personForm, BindingResult bindingResult) {
-//		if (bindingResult.hasErrors())
-//			return "form";
-//		return "redirect:/results";
-//	}
-	
 	/****************************
 	 * HTML NAVIGATION FUNCTIONS
 	 ****************************/
@@ -112,6 +100,8 @@ public class WebController implements WebMvcConfigurer {
 	
 	@PostMapping("/managers")
 	public String onboardManager(@Valid CustomerManager manager, BindingResult bindingResult, Model model) {
+		// Attempt to onboard a manager
+		
 		List<CustomerManager> managers = managerLayer.getManagers();
 		model.addAttribute("managerTable", managers);
 		if (bindingResult.hasErrors())
@@ -155,41 +145,4 @@ public class WebController implements WebMvcConfigurer {
 			string += list.get(i) + newLineChar;
 		return string;
 	}
-	
-	/*******************************************************
-	 * Communicates with the Customer Manager Service Layer
-	 * to retrieve all Customers Managers
-	 *******************************************************/
-//	private void getManagers() {
-//		managerList = managerLayer.getManagers();
-//	}
-	
-//	public String getCustomerList() {
-//		getCustomers();
-//		String result = "";
-//		for (int i = 0; i < customerList.size(); i++) {
-//			result += customerList.get(i).toString();
-//		}
-//		return result;
-//	}
-//	
-//	public String getManagerList() {
-//		getManagers();
-//		String result = "";
-//		for (int i = 0; i < managerList.size(); i++) {
-//			result += managerList.get(i).toString();
-//		}
-//		return result;
-//	}
-	
-	/*
-	public void process(final HttpServletRequest request, final HttpServletResponse response,
-						final ServletContext servletContext, final ITemplateEngine templateEngine) {
-        
-		// This is resolved at runtime
-        WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
-        
-        templateEngine.process("managers", ctx, response.getWriter());
-        
-    }*/
 }

@@ -23,7 +23,6 @@ public class CustomerManagerService {
 	}
 	
 	public CustomerManager getRandomManager() {
-//		return managerTable.findAll().get(0);
 		return managerTable.findRandomManager();
 	}
 	

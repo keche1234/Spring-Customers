@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<beans xmlns:beans="https://www.springframework.org/schema/beans"
-  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
-  xmlns="https://www.springframework.org/schema/data/jpa"
-  xsi:schemaLocation="https://www.springframework.org/schema/beans
-    https://www.springframework.org/schema/beans/spring-beans.xsd
-    https://www.springframework.org/schema/data/jpa
-    https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
-
-  <repositories base-package="com.kechez.customer_project" />-->
-
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -21,7 +11,6 @@
 	</parent>
 	<groupId>com.kechez</groupId>
 	<artifactId>customer-project</artifactId>
-	<!--<version>0.0.1-SNAPSHOT</version>-->
 	<name>customer-project</name>
 	<description>Customer Management Project</description>
 	<url/>
@@ -91,11 +80,6 @@
 			<artifactId>spring-batch-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--<dependency>
-			<groupId>com.echz.spring</groupId>
-			<artifactId>initiialzr-hello</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>-->
 		<dependency>
         	<groupId>com.fasterxml.jackson.dataformat</groupId>
         	<artifactId>jackson-dataformat-xml</artifactId>
