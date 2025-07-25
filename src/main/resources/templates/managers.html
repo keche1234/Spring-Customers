@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+		<!-- Showing customer managers-->
+		<h2><p>Current Customer Managers:</p></h2>
+		<a th:if="${managerTable.isEmpty()}"> No managers onboarded! </a>
+		<table border=1 th:unless="${managerTable.isEmpty()}">
+			<tr>
+				<th>Name</th>
+				<th>ID</th>
+			</tr>
+			<ul>
+				<tr th:each="manager : ${managerTable}">
+					<td style="text-align: center" th:text="${manager.name}"></td>
+					<td style="text-align: center" th:text="${manager.managerID.toString()}"></td>
+				</tr>
+			</ul>
+		</table>
+		
+		<!-- Adding a manager -->
+        <form action="#" th:action="@{/managers}" th:object="${customerManager}" method="post">
+            <table>
+				<tr>
+					<td><h2><p>Add a Customer Manager:</p></td></h2>
+				</tr>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+		
+		<table>
+			<tr>
+			    <td><a href="home.html" th:href="@{/}">Back</a></td>
+			</tr>
+		</table>
+    </body>
+</html>
