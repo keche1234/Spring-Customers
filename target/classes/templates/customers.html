@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+		<!-- Showing customers -->
+		<h2><p>Current Customers:</p></h2>
+		<a th:if="${customerTable.isEmpty()}"> No customers onboarded! </a>
+		<table border=1 th:unless="${customerTable.isEmpty()}">
+			<tr>
+				<th>Name</th>
+				<th>Address</th>
+				<th>Phone Number</th>
+				<th>ID</th>
+				<th>Manager</th>
+			</tr>
+			<ul>
+				<tr th:each="customer : ${customerTable}">
+					<td style="text-align: center" th:text="${customer.name}"></td>
+					<td style="text-align: center" th:text="${customer.address}"></td>
+					<td style="text-align: center" th:text="${customer.phoneNumber}"></td>
+					<td style="text-align: center" th:text="${customer.customerID.toString()} "></td>
+					<td style="text-align: center"><a th:text="${customer.manager.name}"></a>
+						(ID = 
+						<a th:text="${customer.manager.managerID.toString()}"></a>
+						)
+					</td>
+				</tr>
+			</ul>
+		</table>
+		
+		<!-- Adding a customer -->
+        <form action="#" th:action="@{/customers}" th:object="${customer}" method="post">
+            <table>
+				<tr>
+					<td><h2><p>Add a Customer:</p></h2></td>
+				</tr>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+                </tr>
+                <tr>
+                    <td>Phone Number:</td>
+                    <td><input type="text" th:field="*{phoneNumber}" /></td>
+                    <td th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone Number Error</td>
+                </tr>
+				<tr>
+				    <td>Address:</td>
+				    <td><input type="text" th:field="*{address}" /></td>
+				    <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error</td>
+				</tr>
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+		
+		<table>
+			<tr>
+			    <td><a href="home.html" th:href="@{/}">Back</a></td>
+			</tr>
+		</table>
+    </body>
+</html>
